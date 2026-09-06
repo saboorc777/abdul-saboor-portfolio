@@ -71,9 +71,9 @@ export default function Hero() {
         </motion.span>
 
         <motion.h1 variants={item}>
-          I build things
+          I Build Things
           <br />
-          that actually <span className="hero__highlight">work.</span>
+          That Actually <span className="hero__highlight">Work.</span>
         </motion.h1>
 
         <motion.p className="hero__role" variants={item}>
@@ -88,12 +88,12 @@ export default function Hero() {
         <motion.div className="hero__cta" variants={item}>
           <div className="hero__cta-primary">
             <a href="#work" className="btn btn--primary">
-              View projects →
+              View Projects →
             </a>
-            <span className="hero__hint">drag / scroll to explore</span>
+            <span className="hero__hint">Drag / Scroll To Explore</span>
           </div>
           <a href="#contact" className="btn btn--ghost">
-            Get in touch
+            Get In Touch
           </a>
         </motion.div>
 

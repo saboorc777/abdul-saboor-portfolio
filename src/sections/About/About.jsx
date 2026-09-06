@@ -61,18 +61,18 @@ export default function About() {
           <div className="section-heading">
             <span className="eyebrow">About Me</span>
             <h2>
-              Building modern web experiences, one detail at a time
+              Building Modern Web Experiences, One Detail At a Time
             </h2>
           </div>
 
           <p className="about__lead">
-            I&apos;m {personalInfo.name}, a Full Stack Developer and Computer Science student at QUEST
-            Nawabshah. I enjoy turning ideas into clean, responsive, and interactive products &mdash;
-            from frontend interfaces to the databases and APIs that power them.
+            I&apos;m {personalInfo.name}, A Full Stack Developer And Computer Science Student At QUEST
+            Nawabshah. I Enjoy Turning Ideas Into Clean, Responsive, And Interactive Products &mdash;
+            From Frontend Interfaces To The Databases And APIs That Power Them.
           </p>
           <p>
-            My goal is to build digital experiences that feel fast, elegant and genuinely useful, and
-            to keep sharpening that craft with every project I ship.
+            My Goal Is To Build Digital Experiences That Feel Fast, Elegant And Genuinely Useful, And
+            To Keep Sharpening That Craft With Every Project I Ship.
           </p>
 
           <div className="about__facts">
