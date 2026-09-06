@@ -1,0 +1,31 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  background: $color-bg;
+  @include flex(center, center, 1.5rem, column);
+
+  &__mark {
+    font-family: $font-display;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  &__bar {
+    width: 180px;
+    height: 2px;
+    background: $color-border;
+    overflow: hidden;
+    border-radius: $radius-full;
+
+    &-fill {
+      height: 100%;
+      width: 100%;
+      transform-origin: left;
+      background: $color-primary;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.skills {
+  &__hint {
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    color: $color-muted;
+    margin-top: -0.5rem;
+  }
+
+  &__canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: min(640px, 80vh);
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    @include respond(tablet) {
+      height: 420px;
+    }
+
+    @include respond(mobile) {
+      height: 340px;
+    }
+  }
+}
+
+.skill-orb-label {
+  --pill-color: #{$color-primary};
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: $radius-full;
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+  border: 1px solid var(--pill-color);
+  color: var(--pill-color);
+  white-space: nowrap;
+  user-select: none;
+}

@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.card {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+  @include card-hover;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: $radius-sm;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  background: rgba(var(--color-primary-rgb), 0.08);
+  color: $color-primary;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}

@@ -1,0 +1,123 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.footer {
+  position: relative;
+  z-index: $z-content;
+  padding-top: $space-3xl;
+  padding-bottom: $space-lg;
+
+  &__grid {
+    @include flex(space-between, flex-start);
+    padding-bottom: $space-2xl;
+
+    @include respond(tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-xl;
+    }
+  }
+
+  &__brand {
+    max-width: 420px;
+  }
+
+  &__logo {
+    display: inline-block;
+    font-family: $font-mono;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: $color-text;
+
+    .mark {
+      color: $color-secondary;
+    }
+  }
+
+  &__status {
+    @include flex(flex-start, center, 0.6rem);
+    margin-top: 0.85rem;
+    font-family: $font-mono;
+    font-size: 0.82rem;
+    color: $color-muted;
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $color-primary;
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.25);
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+
+  &__links-col {
+    @include flex(flex-end, flex-start, 2rem);
+
+    @include respond(tablet) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: $space-md;
+    }
+  }
+
+  &__links-stack {
+    @include flex(flex-start, flex-start, 0.75rem, column);
+
+    a {
+      font-size: 0.95rem;
+      color: $color-muted;
+      transition: color $duration-fast ease;
+
+      &:hover {
+        color: $color-text;
+      }
+    }
+  }
+
+  &__meta-stack {
+    @include flex(flex-start, flex-start, 0.75rem, column);
+  }
+
+  &__time {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $color-primary;
+  }
+
+  &__top {
+    font-family: $font-mono;
+    font-size: 0.82rem;
+    color: $color-primary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__bottom {
+    @include flex(space-between, center);
+    border-top: 1px solid $color-border;
+    padding-top: $space-md;
+    font-size: 0.82rem;
+    color: $color-muted;
+
+    @include respond(mobile) {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+    }
+  }
+
+  &__stack {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+  }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

@@ -1,0 +1,64 @@
+// ==========================================================================
+// DESIGN TOKENS
+// Color tokens are exposed as CSS custom properties (see base/_theme.scss)
+// so the site can switch between light and dark at runtime. The Sass
+// variables below simply point at those custom properties, so every place
+// that already writes `$color-text` etc. keeps working unchanged.
+// ==========================================================================
+
+// Colors
+$color-bg: var(--color-bg);
+$color-bg-secondary: var(--color-bg-secondary);
+$color-surface: var(--color-surface);
+$color-primary: var(--color-primary);       // pine — primary accent
+$color-primary-rgb: var(--color-primary-rgb);
+$color-secondary: var(--color-secondary);   // ochre — secondary accent, used sparingly
+$color-secondary-rgb: var(--color-secondary-rgb);
+$color-text: var(--color-text);
+$color-text-rgb: var(--color-text-rgb);
+$color-muted: var(--color-muted);
+$color-border: var(--color-border);
+$color-glass: var(--color-glass);
+$color-danger: var(--color-danger);
+
+// Typography
+$font-display: 'Fraunces', 'Georgia', serif;
+$font-body: 'Inter', sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+// Spacing scale
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 1.5rem;
+$space-lg: 2.5rem;
+$space-xl: 4rem;
+$space-2xl: 6rem;
+$space-3xl: 9rem;
+
+// Layout
+$container-max: 1280px;
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-full: 999px;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1280px;
+$bp-nav: 768px;
+
+// Transitions
+$ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+$duration-fast: 0.2s;
+$duration-normal: 0.4s;
+$duration-slow: 0.8s;
+
+// Z-index scale
+$z-background: 0;
+$z-content: 10;
+$z-navbar: 100;
+$z-cursor: 200;
+$z-modal: 300;

@@ -1,0 +1,132 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-navbar;
+  padding: $space-md clamp(1.25rem, 5vw, 3rem);
+  @include flex(space-between, center);
+  transition: background $duration-normal $ease-premium, padding $duration-normal $ease-premium,
+    border-color $duration-normal $ease-premium;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 8px 30px -18px rgba(0, 0, 0, 0.45);
+
+  &--scrolled {
+    background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    padding-block: 0.85rem;
+    border-bottom-color: $color-border;
+    box-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.55);
+  }
+
+  &__logo {
+    font-family: $font-mono;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: $color-text;
+    white-space: nowrap;
+
+    .mark {
+      color: $color-primary;
+    }
+  }
+
+  &__right {
+    @include flex(flex-end, center, 2.25rem);
+  }
+
+  &__links {
+    @include flex(center, center, 2.25rem);
+
+    @media (max-width: $bp-nav) {
+      display: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+    color: color-mix(in srgb, var(--color-text) 78%, transparent);
+    transition: color $duration-fast ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: $color-primary;
+      transition: width $duration-normal $ease-premium;
+    }
+
+    &:hover,
+    &--active {
+      color: $color-text;
+    }
+
+    &--active::after {
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    @include flex(center, center, 1rem);
+
+    @media (max-width: 1180px) {
+      .btn span {
+        display: none;
+      }
+    }
+  }
+
+  &__theme-toggle {
+    @include flex(center, center);
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    font-size: 1.05rem;
+    color: $color-text;
+    transition: transform $duration-fast $ease-premium, border-color $duration-fast ease;
+
+    &:hover {
+      border-color: $color-primary;
+      transform: rotate(20deg);
+    }
+  }
+
+  &__burger {
+    @include flex(center, center);
+    display: none;
+    width: 40px;
+    height: 40px;
+    color: $color-text;
+
+    @media (max-width: $bp-nav) {
+      display: flex;
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: $z-navbar - 1;
+  background: color-mix(in srgb, var(--color-bg) 97%, transparent);
+  backdrop-filter: blur(20px);
+  @include flex(center, center, 2rem, column);
+
+  &__link {
+    font-family: $font-display;
+    font-size: 2rem;
+    color: $color-text;
+  }
+}

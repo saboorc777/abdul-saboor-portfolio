@@ -1,0 +1,188 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.hero {
+  min-height: 100vh;
+  @include flex(center, flex-start, 0, column);
+  position: relative;
+  // !important guards against the generic `.section { padding-block }`
+  // rule (grid.scss) — both are the same specificity, and depending on
+  // stylesheet injection order that rule could silently win and collapse
+  // this padding-top back down, which is what was happening here.
+  padding-top: 8rem !important;
+  overflow: hidden;
+
+  @include respond(tablet) {
+    padding-top: 7.5rem !important;
+  }
+
+  @include respond(mobile) {
+    padding-top: 9rem !important;
+  }
+
+  &__decor {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__shape {
+    position: absolute;
+    color: $color-secondary;
+
+    &--1 {
+      top: 14%;
+      left: 8%;
+    }
+
+    &--2 {
+      top: 22%;
+      right: 12%;
+    }
+
+    &--3 {
+      bottom: 18%;
+      right: 22%;
+    }
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+
+  &__badge {
+    @include flex(flex-start, center, 0.6rem);
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-primary;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+    border-radius: $radius-full;
+    background: rgba(var(--color-primary-rgb), 0.06);
+    margin-bottom: 1.5rem;
+  }
+
+  &__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-secondary;
+    box-shadow: 0 0 8px 1px rgba(var(--color-secondary-rgb), 0.7);
+  }
+
+  &__highlight {
+    color: $color-secondary;
+  }
+
+  &__role {
+    font-family: $font-mono;
+    color: $color-primary;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-block: 1.25rem 1rem;
+    min-height: 1.6em;
+  }
+
+  &__cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: $color-primary;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 0.9s steps(1) infinite;
+  }
+
+  &__desc {
+    max-width: 560px;
+    margin-bottom: $space-lg;
+  }
+
+  &__cta {
+    @include flex(flex-start, flex-start, 1rem);
+    flex-wrap: wrap;
+    margin-bottom: $space-2xl;
+  }
+
+  &__cta-primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__hint {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: $color-muted;
+  }
+
+  &__socials {
+    @include flex(flex-start, center, 1.25rem);
+    margin-bottom: $space-2xl;
+    font-size: 1.3rem;
+    color: $color-muted;
+
+    a {
+      transition: color $duration-fast ease, transform $duration-fast $ease-premium;
+      &:hover {
+        color: $color-primary;
+        transform: translateY(-3px);
+      }
+    }
+
+    @include respond(mobile) {
+      margin-bottom: $space-xl;
+    }
+  }
+
+  &__stats {
+    @include flex(flex-start, flex-start, 3rem);
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+
+    h3 {
+      font-family: $font-display;
+      font-weight: 500;
+      color: $color-primary;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+    }
+
+    span {
+      display: block;
+      color: $color-muted;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    @include flex(center, center);
+    color: $color-text;
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

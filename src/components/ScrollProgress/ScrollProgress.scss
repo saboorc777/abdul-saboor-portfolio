@@ -1,0 +1,12 @@
+@use '../../styles/abstracts/variables' as *;
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: $color-primary;
+  transform-origin: left;
+  z-index: $z-navbar + 1;
+}

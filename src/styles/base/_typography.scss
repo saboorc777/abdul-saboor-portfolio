@@ -1,0 +1,65 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: $color-text;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  font-weight: 450;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+}
+
+p {
+  color: $color-muted;
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  max-width: 62ch;
+}
+
+.eyebrow {
+  @include eyebrow;
+}
+
+// Solid accent color for short marks (a wordmark, a standout figure) —
+// never for coloring a single word inside a sentence-length headline.
+.mark {
+  @include accent-text;
+}
+
+.section-heading {
+  max-width: 640px;
+  margin-bottom: $space-xl;
+
+  .eyebrow {
+    display: block;
+    margin-bottom: $space-sm;
+  }
+}
+
+code, pre {
+  font-family: $font-mono;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

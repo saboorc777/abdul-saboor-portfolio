@@ -1,0 +1,151 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.contact {
+  position: relative;
+  overflow: hidden;
+
+  &__decor {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__shape {
+    position: absolute;
+    color: $color-secondary;
+
+    &--1 {
+      top: 2%;
+      left: 42%;
+    }
+
+    &--2 {
+      top: 12%;
+      right: 18%;
+    }
+
+    &--3 {
+      top: 32%;
+      left: 6%;
+    }
+
+    &--4 {
+      top: 48%;
+      right: 10%;
+    }
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-heading {
+    max-width: 640px;
+    margin-bottom: $space-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 620px;
+    margin-top: $space-md;
+    margin-inline: auto;
+    text-align: left;
+    position: relative;
+    background: color-mix(in srgb, var(--color-bg) 60%, transparent);
+    @include glass(24px);
+
+    // Soft ambient glow bleeding through the corners of the card, matching
+    // the reference's blurred light blobs behind the form.
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    &::before {
+      top: -60px;
+      left: -40px;
+      background: rgba(var(--color-secondary-rgb), 0.25);
+    }
+
+    &::after {
+      bottom: -60px;
+      right: -40px;
+      background: rgba(var(--color-primary-rgb), 0.22);
+    }
+
+    &.card {
+      @include card-hover;
+    }
+  }
+
+  &__success {
+    text-align: center;
+    padding: $space-lg 0;
+    color: $color-primary;
+
+    h3 {
+      color: $color-text;
+      margin-top: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+
+.field {
+  margin-bottom: 1.25rem;
+
+  label {
+    display: block;
+    font-size: 0.85rem;
+    color: $color-muted;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border-radius: $radius-md;
+    background: color-mix(in srgb, var(--color-bg) 45%, transparent);
+    border: 1px solid $color-border;
+    resize: vertical;
+    transition: border-color $duration-fast ease, box-shadow $duration-fast ease;
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.18);
+    }
+  }
+
+  &__error {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    color: $color-danger;
+  }
+}

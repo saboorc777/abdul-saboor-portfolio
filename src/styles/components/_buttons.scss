@@ -1,0 +1,48 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.btn {
+  @include flex(center, center, 0.5rem);
+  @include focus-ring;
+  position: relative;
+  padding: 0.85rem 1.65rem;
+  border-radius: $radius-full;
+  font-family: $font-body;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: transform $duration-fast $ease-premium, box-shadow $duration-normal $ease-premium,
+    background-color $duration-fast ease, border-color $duration-fast ease;
+  isolation: isolate;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &--primary {
+    background: $color-primary;
+    color: $color-bg;
+    box-shadow: 0 10px 24px -12px rgba(var(--color-primary-rgb), 0.65);
+
+    &:hover {
+      box-shadow: 0 14px 30px -10px rgba(var(--color-primary-rgb), 0.7);
+      transform: translateY(-2px);
+    }
+  }
+
+  &--ghost {
+    color: $color-text;
+    border: 1px solid $color-border;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      transform: translateY(-2px);
+    }
+  }
+
+  &--sm {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}

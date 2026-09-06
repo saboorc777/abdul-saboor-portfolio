@@ -1,0 +1,18 @@
+@use '../../styles/abstracts/variables' as *;
+
+// Full-page 3D backdrop: starfield + a receding grid floor + a few slow
+// wireframe cubes, with the camera dollying gently on scroll. Sits fixed
+// behind all content and never captures pointer/scroll input.
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: $z-background;
+  background: $color-bg;
+  pointer-events: none;
+
+  canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

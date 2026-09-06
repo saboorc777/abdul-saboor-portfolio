@@ -1,0 +1,78 @@
+@use 'variables' as *;
+
+@mixin glass($blur: 20px, $bg: $color-glass) {
+  background: $bg;
+  backdrop-filter: blur($blur) saturate(140%);
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+  border: 1px solid $color-border;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+@mixin section-padding {
+  padding-block: clamp(3.5rem, 9vw, $space-3xl);
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $bp-mobile) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $bp-tablet) { @content; }
+  } @else if $breakpoint == laptop {
+    @media (max-width: $bp-laptop) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (max-width: $bp-desktop) { @content; }
+  }
+}
+
+@mixin flex($justify: flex-start, $align: center, $gap: 0, $dir: row) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// Solid accent-colored text for short marks (a wordmark, a single figure).
+// Not intended for accenting one word inside a longer headline.
+@mixin accent-text {
+  color: $color-primary;
+}
+
+@mixin card-hover {
+  transition: transform $duration-normal $ease-premium,
+    box-shadow $duration-normal $ease-premium,
+    border-color $duration-normal $ease-premium;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--color-primary-rgb), 0.35);
+    box-shadow: 0 16px 40px -24px rgba(var(--color-text-rgb), 0.35);
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin eyebrow {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: $color-primary;
+}

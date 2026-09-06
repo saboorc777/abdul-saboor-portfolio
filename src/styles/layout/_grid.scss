@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  gap: $space-lg;
+
+  &--2 {
+    grid-template-columns: repeat(2, 1fr);
+    @include respond(tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-md;
+    @include respond(laptop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(tablet) {
+      grid-template-columns: 1fr;
+      gap: $space-sm;
+    }
+  }
+
+  &--4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-md;
+    @include respond(laptop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

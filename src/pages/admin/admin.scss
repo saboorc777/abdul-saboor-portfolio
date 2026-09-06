@@ -1,0 +1,189 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.admin-auth {
+  min-height: 100vh;
+  @include flex(center, center);
+  background: $color-bg;
+  padding: $space-md;
+
+  &__card {
+    width: 100%;
+    max-width: 380px;
+
+    h2 {
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      margin-bottom: $space-md;
+    }
+  }
+}
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background: $color-bg;
+
+  &__sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    padding: $space-lg $space-sm;
+    border-right: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+
+    @include respond(tablet) {
+      width: 72px;
+      padding: $space-md 0.5rem;
+    }
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-weight: 600;
+    padding: 0 0.75rem;
+    margin-bottom: $space-lg;
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+
+    a {
+      @include flex(flex-start, center, 0.75rem);
+      padding: 0.7rem 0.9rem;
+      border-radius: $radius-sm;
+      color: $color-muted;
+      font-size: 0.9rem;
+
+      &.active {
+        background: rgba(var(--color-primary-rgb), 0.15);
+        color: $color-text;
+      }
+    }
+  }
+
+  &__logout {
+    @include flex(flex-start, center, 0.75rem);
+    padding: 0.7rem 0.9rem;
+    color: $color-muted;
+    font-size: 0.9rem;
+
+    &:hover {
+      color: $color-danger;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    padding: $space-lg clamp(1rem, 3vw, 2.5rem);
+    max-width: 900px;
+  }
+}
+
+.admin-overview h2 {
+  margin-bottom: 0.75rem;
+}
+
+.admin-notice {
+  padding: 0.75rem 1rem;
+  border-radius: $radius-sm;
+  background: rgba(var(--color-secondary-rgb), 0.1);
+  color: $color-secondary;
+  margin-bottom: $space-md;
+  font-size: 0.9rem;
+}
+
+.admin-profile-preview {
+  width: 140px;
+  height: 140px;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  background: $color-bg-secondary;
+  margin-bottom: $space-md;
+  @include flex(center, center);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  span {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: $color-muted;
+  }
+}
+
+.admin-form {
+  margin-bottom: $space-lg;
+
+  h3 {
+    margin-bottom: $space-md;
+  }
+
+  &__hint {
+    display: block;
+    font-size: 0.78rem;
+    color: $color-muted;
+    margin-top: 0.4rem;
+  }
+
+  &__checkbox {
+    @include flex(flex-start, center, 0.6rem);
+    margin-bottom: $space-md;
+    font-size: 0.9rem;
+  }
+
+  &__actions {
+    @include flex(flex-start, center, 1rem);
+  }
+}
+
+.admin-table {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid $color-border;
+    font-size: 0.9rem;
+  }
+
+  th {
+    color: $color-muted;
+    font-weight: 500;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__actions {
+    @include flex(flex-end, center, 0.6rem);
+
+    button {
+      color: $color-secondary;
+      font-size: 0.85rem;
+
+      &:last-child {
+        color: $color-danger;
+      }
+    }
+  }
+}
