@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMapPin, FiBookOpen, FiCode, FiTarget } from 'react-icons/fi';
 import { personalInfo } from '../../data/portfolioData';
-import { profileApi } from '../../services/api';
+ import { profileApi, resolveAssetUrl } from '../../services/api';
 import './About.scss';
 
 const facts = [
@@ -40,7 +40,7 @@ export default function About() {
           <div className="about__frame">
             <div className="about__frame-glow" />
             {photoUrl ? (
-              <img src={photoUrl} alt={personalInfo.name} className="about__frame-photo" />
+              <img src={resolveAssetUrl(photoUrl)} alt={personalInfo.name} className="about__frame-photo" />
             ) : (
               <div className="about__frame-placeholder">
                 {personalInfo.name

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiAward, FiDownload } from 'react-icons/fi';
 import { certificates as staticCertificates } from '../../data/portfolioData';
-import { certificatesApi } from '../../services/api';
+import { certificatesApi, resolveAssetUrl } from '../../services/api';
 import './Certificates.scss';
 
 export default function Certificates() {
@@ -41,7 +41,7 @@ export default function Certificates() {
             >
               <div className="cert-card__preview">
                 {cert.image ? (
-                  <img src={cert.image} alt={cert.title} />
+                  <img src={resolveAssetUrl(cert.image)} alt={cert.title} />
                 ) : (
                   <FiAward />
                 )}

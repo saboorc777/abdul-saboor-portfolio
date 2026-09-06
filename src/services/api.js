@@ -1,8 +1,22 @@
 import axios from 'axios';
 
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
+// The API base includes a trailing /api (e.g. https://backend.onrender.com/api).
+// Uploaded files are served from the same host but without that suffix
+// (…/uploads/xyz.jpg, not …/api/uploads/xyz.jpg), so strip it to get the origin.
+const API_ORIGIN = API_BASE.replace(/\/api\/?$/, '');
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: API_BASE,
 });
+
+// Turns a backend-relative path (e.g. "/uploads/xyz.jpg") into a URL the
+// browser can actually load.
+export function resolveAssetUrl(path) {
+  if (!path) return null;
+  if (/^https?:\/\//.test(path)) return path;
+  return `${API_ORIGIN}${path}`;
+}
 
 // Attach the admin JWT (if present) to every request.
 api.interceptors.request.use((config) => {

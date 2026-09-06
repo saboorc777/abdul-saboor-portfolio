@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { profileApi } from '../../services/api';
+import { profileApi, resolveAssetUrl } from '../../services/api';
 
 export default function ProfileManager() {
   const [photoUrl, setPhotoUrl] = useState(null);
@@ -55,7 +55,7 @@ export default function ProfileManager() {
           <>
             <div className="admin-profile-preview">
               {photoUrl ? (
-                <img src={photoUrl} alt="Current profile" />
+                <img src={resolveAssetUrl(photoUrl)} alt="Current profile" />
               ) : (
                 <span>No photo uploaded yet — the About section shows your initials instead.</span>
               )}
